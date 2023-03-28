@@ -1,0 +1,14 @@
+E:\помащьпоисрпо8сем\13\13A\13C\bin\Debug\13C.exe.config
+E:\помащьпоисрпо8сем\13\13A\13C\bin\Debug\13C.exe
+E:\помащьпоисрпо8сем\13\13A\13C\bin\Debug\13C.pdb
+E:\помащьпоисрпо8сем\13\13A\13C\obj\Debug\MainWindow.g.cs
+E:\помащьпоисрпо8сем\13\13A\13C\obj\Debug\App.g.cs
+E:\помащьпоисрпо8сем\13\13A\13C\obj\Debug\13C_MarkupCompile.cache
+E:\помащьпоисрпо8сем\13\13A\13C\obj\Debug\13C_MarkupCompile.lref
+E:\помащьпоисрпо8сем\13\13A\13C\obj\Debug\MainWindow.baml
+E:\помащьпоисрпо8сем\13\13A\13C\obj\Debug\13C.g.resources
+E:\помащьпоисрпо8сем\13\13A\13C\obj\Debug\_13C.Properties.Resources.resources
+E:\помащьпоисрпо8сем\13\13A\13C\obj\Debug\13C.csproj.GenerateResource.cache
+E:\помащьпоисрпо8сем\13\13A\13C\obj\Debug\13C.csproj.CoreCompileInputs.cache
+E:\помащьпоисрпо8сем\13\13A\13C\obj\Debug\13C.exe
+E:\помащьпоисрпо8сем\13\13A\13C\obj\Debug\13C.pdb

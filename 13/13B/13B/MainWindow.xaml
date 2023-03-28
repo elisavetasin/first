@@ -1,0 +1,77 @@
+﻿<Window x:Class="_13B.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_13B"
+        mc:Ignorable="d"
+        Name="window" Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ControlTemplate x:Key="validationTemplate">
+            <DockPanel>
+                <AdornedElementPlaceholder/>
+                <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
+            </DockPanel>
+        </ControlTemplate>
+
+        <Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="Background" Value="Red" />
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)/ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
+    <DockPanel Margin="3">
+        <Grid DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="count_textBox" Grid.Row="0" Grid.Column="0" Validation.ErrorTemplate="{StaticResource validationTemplate}"
+                     Style="{StaticResource textBoxInError}"
+                     Margin="3 0" Width="100" HorizontalAlignment="Left">
+                <TextBox.Text>
+                    <Binding ElementName="window" Path="Count" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <local:TrolleyCountRule Min="2" Max="60" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <Button Name="ok_button" Grid.Row="1" Grid.Column="0" Margin="3" Width="100" HorizontalAlignment="Left" Content="Подтвердить" Click="ok_button_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=(Validation.HasError), ElementName=count_textBox}" Value="False">
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Label Name="start_label" Grid.RowSpan="2" Grid.Column="1" Margin="3" FontSize="20" />
+        </Grid>
+
+        <WrapPanel Name="trolleys_wrapPanel" DockPanel.Dock="Top" Orientation="Horizontal" ItemHeight="50" ItemWidth="50">
+            <WrapPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="3" />
+                    <Setter Property="Background" Value="Green" />
+                </Style>
+            </WrapPanel.Resources>
+        </WrapPanel>
+
+        <TextBox Name="log_textBox" IsReadOnly="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" TextWrapping="Wrap" AcceptsReturn="True" />
+    </DockPanel>
+</Window>
